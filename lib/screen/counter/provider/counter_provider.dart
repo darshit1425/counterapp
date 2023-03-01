@@ -27,4 +27,8 @@ class CounterProvider extends ChangeNotifier {
     i = i * 4;
     notifyListeners();
   }
+  void reset(){
+    i=0;
+    notifyListeners();
+  }
 }

@@ -14,7 +14,7 @@ class _CounterScreenState extends State<CounterScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black12,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           centerTitle: true,
           elevation: 0,
@@ -26,14 +26,30 @@ class _CounterScreenState extends State<CounterScreen> {
         ),
         body: Center(
           child: Consumer<CounterProvider>(
-            builder: (context, value, child) => Text(
-              "${value.i}",
-              style: TextStyle(fontSize: 25),
+            builder: (context, value, child) => Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "${value.i}",
+                  style: TextStyle(fontSize: 35),
+                ),
+                SizedBox(
+                  height: 180,
+                ),
+                FloatingActionButton(
+                  backgroundColor: Colors.black,
+                  onPressed: () {
+                    Provider.of<CounterProvider>(context, listen: false)
+                        .reset();
+                  },
+                  child: Icon(Icons.refresh),
+                ),
+              ],
             ),
           ),
         ),
         floatingActionButton: Padding(
-          padding: const EdgeInsets.all(80),
+          padding: const EdgeInsets.all(26),
           child: Row(
             children: [
               FloatingActionButton(
